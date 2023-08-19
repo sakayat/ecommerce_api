@@ -4,6 +4,8 @@ const { default: mongoose } = require("mongoose");
 const app = express();
 const port = process.env.PORT || 30000;
 
+const productRoute = require("./routes/route")
+
 // connectDB
 
 mongoose
@@ -14,3 +16,10 @@ mongoose
     app.listen(port, () => console.log(`mongodb connected successfully`));
   })
   .catch((error) => console.log(error));
+
+
+// middleware
+app.use(express.json())
+
+//   route
+app.use("/api", productRoute)

@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors")
 const { default: mongoose } = require("mongoose");
 const app = express();
 const port = process.env.PORT || 30000;
@@ -20,6 +21,7 @@ mongoose
 
 // middleware
 app.use(express.json())
+app.use(cors())
 
 //   route
 app.use("/api", productRoute)
